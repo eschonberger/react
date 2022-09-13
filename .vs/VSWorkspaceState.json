@@ -3,9 +3,8 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\assets",
     "\\src\\components"
   ],
-  "SelectedNode": "\\src\\App.js",
+  "SelectedNode": "\\src\\components\\ItemListContainer.css",
   "PreviewInSolutionExplorer": false
 }
