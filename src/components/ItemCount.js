@@ -73,7 +73,7 @@ const ItemCount = ({ stock, initial }) => {
 				<Card>
 					<CardMedia
 						component='img'
-						height='140'
+                       height='140'
 						image='https://http2.mlstatic.com/D_NQ_NP_729700-MLA47294489603_082021-O.webp'
 						alt='test'
 					/>
