@@ -16,29 +16,40 @@ import CircularProgress from '@mui/material/CircularProgress';
 const ItemListContainer = ({ greeting }) => {
     const [listProducts, setListProducts] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
 
     useEffect(() => {
-        setLoading(true)
-        customFetch(products)
-            .then(res => {
-                setLoading(false)
-                setListProducts(res)
-            })
-    }, [])
+        fetch('https://fakestoreapi.com/products')
+            .then((response) => response.json())
+            .then((data) => {
+                const lista = data.map((product) => {
+    return { ...product, stock: Math.floor(Math.random() * 100) }
+})
+setListProducts(lista)
+})
+.catch (() => {
+    setError(true)
+
+})
+.finally(() => {
+    setLoading(false)
+})
+
+}, [])
 
 
-    return (
-        <>
-            <h2> {greeting} </h2>
+return (
+    <>
+        <h2> {greeting} </h2>
 
-            {
-                /*            <ItemCount stock="5" initial="2" />*/
-            }
-            
-            {loading ? <CircularProgress /> : <ItemList listProducts={listProducts} />}
-        </>
-    )
+        {
+            /*            <ItemCount stock="5" initial="2" />*/
+        }
+
+        {loading ? <CircularProgress /> : <ItemList listProducts={listProducts} />}
+    </>
+)
 }
 
 

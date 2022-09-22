@@ -17,16 +17,16 @@ const NavBar = () => {
         <header>
             <img src={logo} alt="logo"></img>
 
-            <h1>Esencias Naturales</h1>
+            <h1>Venta Online</h1>
 
             <nav>
-                <a href="">Velas</a>
+                <a href="">Ropa Mujer</a>
 
-                <a href="">Difusores</a>
+                <a href="">Ropa Hombre</a>
 
-                <a href="">Splash</a>
+                <a href="">Mochilas</a>
 
-                <a href="">Jabones</a>
+                <a href="">Accesorios</a>
 
                 {/*Componente Carrito*/}
                 <CartWidget />

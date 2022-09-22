@@ -13,11 +13,7 @@ import Grid from '@mui/material/Grid';
 
 
 
-const Item = ({ product }) => {
-
-
-
-
+const ItemDetail = ({ product }) => {
 
     return (
         <>
@@ -25,7 +21,7 @@ const Item = ({ product }) => {
             <Typography component='div' >{product.title}</Typography>
             <Grid container alignItems='center' alignContent='center'>
 
-                <Card>
+                <Card  >
 
                     <CardMedia
                         component='img'
@@ -49,7 +45,9 @@ const Item = ({ product }) => {
 
         </>
     )
+
+
 }
 
 
-export default Item;
+export default ItemDetail;
