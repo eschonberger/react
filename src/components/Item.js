@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 
 //Material Icons
@@ -15,6 +16,7 @@ import Grid from '@mui/material/Grid';
 
 const Item = ({ product }) => {
 
+        let REDIRECCION = `../producto/${product.id}`
 
 
 
@@ -37,6 +39,15 @@ const Item = ({ product }) => {
 
                         <Typography component='div'>{product.description}</Typography>
                         <Typography component='div' >Precio: ${product.price}</Typography>
+
+                       
+
+                        <NavLink to={REDIRECCION}> Ver Mas </NavLink>
+                       
+
+                      
+                                
+                      
 
                     </CardContent>
                     <CardActions>

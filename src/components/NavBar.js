@@ -9,34 +9,40 @@ import "./NavBar.css";
 //Componente Carrito
 import CartWidget from '../components/CartWidget';
 
+import { Nav } from './Nav';
+
+import { Link } from 'react-router-dom';
 
 
 
-const NavBar = () => {
+const NavBar = ({ nombre, apellido, id, children }) => {
+
+    const categorias = [
+        { id: 0, nombre: 'electronics', ruta: '/categoria/electronics' },
+        { id: 1, nombre: 'jewelery', ruta: '/categoria/jewelery' },
+        { id: 2, nombre: "men's clothing", ruta: "/categoria/men's clothing" },
+        { id: 3, nombre: "woman's clothing", ruta: "/categoria/women's clothing" },
+
+
+    ]
+
+
     return (
         <header>
-            <img src={logo} alt="logo"></img>
+            <Link to={'/'}>
+                <img src={logo} alt="logo"></img>
+
+            </Link>
 
             <h1>Venta Online</h1>
 
-            <nav>
-                <a href="">Ropa Mujer</a>
+            <Nav categorias={categorias} />
 
-                <a href="">Ropa Hombre</a>
+            {/*Componente Carrito*/}
 
-                <a href="">Mochilas</a>
-
-                <a href="">Accesorios</a>
-
-                {/*Componente Carrito*/}
+            <Link to={'/cart'}>
                 <CartWidget />
-
-            </nav>
-
-
-
-
-
+            </Link>
 
         </header>
     )
