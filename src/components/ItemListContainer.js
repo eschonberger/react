@@ -53,9 +53,7 @@ return (
     <>
         <h2> {greeting} </h2>
 
-        {
-            /*            <ItemCount stock="5" initial="2" />*/
-        }
+
 
         {loading ? <CircularProgress /> : <ItemList listProducts={listProducts} />}
     </>

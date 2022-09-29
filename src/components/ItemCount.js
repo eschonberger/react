@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 //CSS
 import './ItemCount.css';
@@ -22,78 +23,61 @@ import Grid from '@mui/material/Grid';
 
 
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, onAdd, finalizarCompra }) => {
 
-	//Parseo para que se trabajen como numericos
-	let cantStock = parseInt(stock);
-	let valor = parseInt(initial);
+    //Parseo para que se trabajen como numericos
+    let cantStock = parseInt(stock);
+    let valor = parseInt(initial);
 
-	//Inicializo con el valor reicibido
-	const [contador, setContador] = useState(valor);
+    //Inicializo con el valor reicibido
+    const [contador, setContador] = useState(valor);
 
+    const sumar = () => {
+        //Verifica que no supere la cantidad de Stock
+        if (cantStock > contador) {
+            setContador(contador + 1);
+        }
+    }
 
-
-
-	const sumar = () => {
-		//Verifica que no supere la cantidad de Stock
-		if (cantStock > contador) {
-			setContador(contador + 1);
-		}
-	}
-
-	const restar = () => {
-		//Controla que no se ponga en 0
-		if (contador > 1) {
-			setContador(contador - 1);
-		}
+    const restar = () => {
+        //Controla que no se ponga en 0
+        if (contador > 1) {
+            setContador(contador - 1);
+        }
 
 
-	}
-
-	const onAdd = () => {
-		//Para agregar al carrito
-		Swal.fire({
-			icon: 'success',
-			title: 'se agregaron ' + contador + ' items al carrito',
-			showConfirmButton: false,
-			timer: 1500
-		})
-
-	}
-
-	return (
-		<>
+    }
 
 
 
+    return (
+        <>
 
 
+            <Grid container alignItems='center' alignContent='center'>
+                <Card>
 
-			<Grid container alignItems='center' alignContent='center'>
-				<Card>
-					<CardMedia
-						component='img'
-                       height='140'
-						image='https://http2.mlstatic.com/D_NQ_NP_729700-MLA47294489603_082021-O.webp'
-						alt='test'
-					/>
-					<CardContent>
-						<Typography variant='h2' component='div' >{contador}</Typography>
+                    <CardContent>
+                        <Typography variant='h2' component='div' >{contador}</Typography>
 
-					</CardContent>
-					<CardActions>
-						<Button onClick={restar} size='small'>-</Button>
-						<Button onClick={sumar} size='small'>+</Button>
-					</CardActions>
-					<Button onClick={onAdd} size='small'>Agregar al Carrito</Button>
-				</Card>
-			</Grid>
+                    </CardContent>
+                    <CardActions>
+                        <Button onClick={restar} size='small'>-</Button>
+                        <Button onClick={sumar} size='small'>+</Button>
+                    </CardActions>
+
+                    {
+                        finalizarCompra === false ? <Button onClick={onAdd} size='small'>Agregar al Carrito</Button> : <Link to="/cart/">Finalizar Compra</Link>
+                    }
+                    
+                </Card>
+            </Grid>
 
 
 
 
-		</>
-	)
+        </>
+    )
 }
 
 export default ItemCount;

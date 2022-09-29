@@ -2,6 +2,12 @@ import React from 'react';
 
 import ItemDetail from './ItemDetail';
 
+import ItemCount from './ItemCount';
+
+
+//Importo Libreria SweetAler
+import Swal from 'sweetalert2';
+
 //CSS
 import './ItemDetailContainer.css';
 
@@ -16,6 +22,19 @@ import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = ({ greeting }) => {
 
+    //Detectar y mostrar Boton Finalizar Compra
+    const [finalizarCompra, setfinalizarCompra] = useState(false);
+
+    
+    const onAdd = () => {
+        setfinalizarCompra(true);
+      
+
+    }
+
+
+
+    
     let { IdProducto } = useParams();
     
     const [loading, setLoading] = useState(true)
@@ -54,7 +73,9 @@ const ItemDetailContainer = ({ greeting }) => {
             <h2> {greeting} </h2>
 
             {loading ? <CircularProgress /> : <ItemDetail product={producto} />}
-
+            
+            <ItemCount stock="5" initial="1" onAdd={onAdd} finalizarCompra={finalizarCompra} />
+            
         </>
     )
 }
